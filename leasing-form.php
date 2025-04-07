@@ -1,10 +1,12 @@
 <?php
+
 /**
- * Plugin Name: Vehicle Leasing Form
- * Plugin URI: 
+ * Plugin Name: WP Customizable Vehicle Leasing Form
+ * Plugin URI: https://github.com/pixelabs-wp/wp-customizable-vehicle-leasing-form
  * Description: A plugin to create and manage vehicle leasing options with a customizable form. Use the shortcode [leasing_form id="123"] or simply [leasing_form] within a vehicle post.
  * Version: 1.0.0
- * Author: 
+ * Author: Pixelabs | Ali Shahmir Khan
+ * Author URI: https://github.com/pixelabs-wp
  * Text Domain: leasing-form
  */
 
