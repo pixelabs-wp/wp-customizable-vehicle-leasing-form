@@ -1,5 +1,14 @@
 <?php
 /**
+ * Post types for the leasing form plugin
+ */
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
  * Register custom post types
  */
 class Leasing_Form_Post_Types {

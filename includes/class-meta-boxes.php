@@ -1,5 +1,14 @@
 <?php
 /**
+ * Meta boxes for vehicle post type
+ */
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+/**
  * Handle meta boxes for the vehicle post type
  */
 class Leasing_Form_Meta_Boxes {
@@ -166,7 +175,6 @@ class Leasing_Form_Meta_Boxes {
      * Save meta box data
      */
     public function save_meta_box_data($post_id) {
-        // Check if nonce is set
         if (!isset($_POST['vehicle_leasing_options_nonce'])) {
             return;
         }
@@ -193,7 +201,7 @@ class Leasing_Form_Meta_Boxes {
         
         // Save watching count
         if (isset($_POST['watching_count'])) {
-            update_post_meta($post_id, '_watching_count', intval($_POST['watching_count']));
+            update_post_meta($post_id, '_watching_count', absint($_POST['watching_count']));
         }
         
         // Save WhatsApp number
@@ -211,11 +219,11 @@ class Leasing_Form_Meta_Boxes {
                 }
                 
                 $subscription_options[] = array(
-                    'months' => intval($option['months']),
-                    'base_price' => isset($option['base_price']) ? floatval($option['base_price']) : 0,
-                    'price_adjustment' => isset($option['price_adjustment']) ? floatval($option['price_adjustment']) : 0,
-                    'is_selected' => isset($option['is_selected']) && $option['is_selected'] === 'yes',
-                    'is_recommended' => isset($option['is_recommended']) && $option['is_recommended'] === 'yes',
+                    'months' => absint($option['months']),
+                    'base_price' => isset($option['base_price']) ? (float) sanitize_text_field($option['base_price']) : 0,
+                    'price_adjustment' => isset($option['price_adjustment']) ? (float) sanitize_text_field($option['price_adjustment']) : 0,
+                    'is_selected' => isset($option['is_selected']) && sanitize_text_field($option['is_selected']) === 'yes',
+                    'is_recommended' => isset($option['is_recommended']) && sanitize_text_field($option['is_recommended']) === 'yes',
                     'description' => isset($option['description']) ? sanitize_text_field($option['description']) : '',
                 );
             }
@@ -234,9 +242,9 @@ class Leasing_Form_Meta_Boxes {
                 
                 $insurance_options[] = array(
                     'name' => sanitize_text_field($option['name']),
-                    'price_adjustment' => isset($option['price_adjustment']) ? floatval($option['price_adjustment']) : 0,
-                    'is_selected' => isset($option['is_selected']) && $option['is_selected'] === 'yes',
-                    'is_recommended' => isset($option['is_recommended']) && $option['is_recommended'] === 'yes',
+                    'price_adjustment' => isset($option['price_adjustment']) ? (float) sanitize_text_field($option['price_adjustment']) : 0,
+                    'is_selected' => isset($option['is_selected']) && sanitize_text_field($option['is_selected']) === 'yes',
+                    'is_recommended' => isset($option['is_recommended']) && sanitize_text_field($option['is_recommended']) === 'yes',
                     'description' => isset($option['description']) ? sanitize_text_field($option['description']) : '',
                 );
             }
@@ -254,10 +262,10 @@ class Leasing_Form_Meta_Boxes {
                 }
                 
                 $mileage_options[] = array(
-                    'miles' => intval($option['miles']),
-                    'price_adjustment' => isset($option['price_adjustment']) ? floatval($option['price_adjustment']) : 0,
-                    'is_selected' => isset($option['is_selected']) && $option['is_selected'] === 'yes',
-                    'is_recommended' => isset($option['is_recommended']) && $option['is_recommended'] === 'yes',
+                    'miles' => absint($option['miles']),
+                    'price_adjustment' => isset($option['price_adjustment']) ? (float) sanitize_text_field($option['price_adjustment']) : 0,
+                    'is_selected' => isset($option['is_selected']) && sanitize_text_field($option['is_selected']) === 'yes',
+                    'is_recommended' => isset($option['is_recommended']) && sanitize_text_field($option['is_recommended']) === 'yes',
                     'description' => isset($option['description']) ? sanitize_text_field($option['description']) : '',
                 );
             }

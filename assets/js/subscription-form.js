@@ -345,10 +345,20 @@
         const mileageText = selectedMileage ? selectedMileage.querySelector('.alc-text-lg').textContent : '';
         const totalPrice = document.getElementById('totalPrice').textContent;
         
+        // Check for nonce
+        const nonceField = document.getElementById('leasing_form_nonce');
+        const nonce = nonceField ? nonceField.value : '';
+        
+        if (!nonce) {
+            console.error('Security token missing. Cannot process form.');
+            return;
+        }
+        
         // Data to be sent
         const submissionData = {
             vehicle_id: window.leasingFormData.vehicle_id || 0,
             vehicle_title: window.leasingFormData.vehicle_title || '',
+            nonce: nonce,
             subscription: {
                 duration: subscriptionText,
                 value: selectedSubscription ? selectedSubscription.dataset.value : '',

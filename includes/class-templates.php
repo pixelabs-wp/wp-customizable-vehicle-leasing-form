@@ -2,6 +2,12 @@
 /**
  * Handle template overrides for the vehicle post type
  */
+
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class Leasing_Form_Templates {
 
     /**
@@ -125,15 +131,56 @@ class Leasing_Form_Templates {
             $base_price = 299; // Default price if not set
         }
         
+        // Sanitize arrays before passing to JS
+        $sanitized_subscription_options = array();
+        if (!empty($subscription_options) && is_array($subscription_options)) {
+            foreach ($subscription_options as $option) {
+                $sanitized_subscription_options[] = array(
+                    'months' => absint($option['months'] ?? 0),
+                    'base_price' => (float) ($option['base_price'] ?? 0),
+                    'price_adjustment' => (float) ($option['price_adjustment'] ?? 0),
+                    'is_selected' => (bool) ($option['is_selected'] ?? false),
+                    'is_recommended' => (bool) ($option['is_recommended'] ?? false),
+                    'description' => esc_js($option['description'] ?? ''),
+                );
+            }
+        }
+        
+        $sanitized_insurance_options = array();
+        if (!empty($insurance_options) && is_array($insurance_options)) {
+            foreach ($insurance_options as $option) {
+                $sanitized_insurance_options[] = array(
+                    'name' => esc_js($option['name'] ?? ''),
+                    'price_adjustment' => (float) ($option['price_adjustment'] ?? 0),
+                    'is_selected' => (bool) ($option['is_selected'] ?? false),
+                    'is_recommended' => (bool) ($option['is_recommended'] ?? false),
+                    'description' => esc_js($option['description'] ?? ''),
+                );
+            }
+        }
+        
+        $sanitized_mileage_options = array();
+        if (!empty($mileage_options) && is_array($mileage_options)) {
+            foreach ($mileage_options as $option) {
+                $sanitized_mileage_options[] = array(
+                    'miles' => absint($option['miles'] ?? 0),
+                    'price_adjustment' => (float) ($option['price_adjustment'] ?? 0),
+                    'is_selected' => (bool) ($option['is_selected'] ?? false),
+                    'is_recommended' => (bool) ($option['is_recommended'] ?? false),
+                    'description' => esc_js($option['description'] ?? ''),
+                );
+            }
+        }
+        
         return array(
-            'vehicle_id' => $vehicle_id,
-            'vehicle_title' => get_the_title($vehicle_id),
+            'vehicle_id' => absint($vehicle_id),
+            'vehicle_title' => esc_js(get_the_title($vehicle_id)),
             'base_price' => floatval($base_price),
-            'subscription_options' => !empty($subscription_options) ? $subscription_options : array(),
-            'insurance_options' => !empty($insurance_options) ? $insurance_options : array(),
-            'mileage_options' => !empty($mileage_options) ? $mileage_options : array(),
-            'watching_count' => get_post_meta($vehicle_id, '_watching_count', true) ?: rand(5, 15),
-            'whatsapp_number' => !empty($whatsapp_number) ? $whatsapp_number : '923105054025' // Default number if not set
+            'subscription_options' => $sanitized_subscription_options,
+            'insurance_options' => $sanitized_insurance_options,
+            'mileage_options' => $sanitized_mileage_options,
+            'watching_count' => absint(get_post_meta($vehicle_id, '_watching_count', true) ?: rand(5, 15)),
+            'whatsapp_number' => esc_js(!empty($whatsapp_number) ? $whatsapp_number : '923105054025') // Default number if not set
         );
     }
 } 

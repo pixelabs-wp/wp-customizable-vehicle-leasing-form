@@ -14,12 +14,13 @@ if (!defined('ABSPATH')) {
 
 <div class="alc-form-container alc-py-8">
     <form id="subscriptionForm" class="alc-card">
+        <?php wp_nonce_field('leasing_form_submit', 'leasing_form_nonce'); ?>
         <h1 class="alc-text-2xl alc-font-bold alc-mb-6">Lease a <?php echo esc_html(get_the_title($vehicle_id ?? 0)); ?></h1>
 
         <!-- Subscription length - will be populated by JS -->
         <div class="alc-mb-6">
             <div class="alc-section-heading">
-                Subscription length
+                <?php esc_html_e('Subscription length', 'leasing-form'); ?>
                 <i class="alc-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
@@ -35,7 +36,7 @@ if (!defined('ABSPATH')) {
         <!-- Insurance - will be populated by JS -->
         <div class="alc-mb-6">
             <div class="alc-section-heading">
-                Insurance
+                <?php esc_html_e('Insurance', 'leasing-form'); ?>
                 <i class="alc-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
@@ -51,7 +52,7 @@ if (!defined('ABSPATH')) {
         <!-- Monthly mileage allowance - will be populated by JS -->
         <div class="alc-mb-6">
             <div class="alc-section-heading">
-                Monthly mileage allowance
+                <?php esc_html_e('Monthly mileage allowance', 'leasing-form'); ?>
                 <i class="alc-info-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-info-circle">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" />
@@ -67,17 +68,17 @@ if (!defined('ABSPATH')) {
         <!-- Total price -->
         <div class="alc-flex alc-justify-between alc-items-center alc-mb-6">
             <div>
-                <div class="alc-text-sm alc-text-gray-500">Total monthly price</div>
+                <div class="alc-text-sm alc-text-gray-500"><?php esc_html_e('Total monthly price', 'leasing-form'); ?></div>
                 <div class="alc-price-display" id="totalPrice">AED 1,900</div>
-                <div class="alc-price-info">Inclusive of VAT</div>
+                <div class="alc-price-info"><?php esc_html_e('Inclusive of VAT', 'leasing-form'); ?></div>
             </div>
             <div class="alc-text-sm alc-text-gray-500">
-                <span id="watchingCounter">3</span> people watching this car
+                <span id="watchingCounter">3</span> <?php esc_html_e('people watching this car', 'leasing-form'); ?>
             </div>
         </div>
 
         <!-- Submit button -->
-        <button type="submit" class="alc-submit-btn alc-w-full">Proceed</button>
+        <button type="submit" class="alc-submit-btn alc-w-full"><?php esc_html_e('Proceed', 'leasing-form'); ?></button>
     </form>
 </div>
 

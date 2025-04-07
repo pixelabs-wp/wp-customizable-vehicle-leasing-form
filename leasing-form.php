@@ -88,6 +88,11 @@ class Leasing_Form_Plugin {
      * Register admin assets
      */
     public function register_admin_assets($hook) {
+        // Only proceed if user has the right capability
+        if (!current_user_can('edit_posts')) {
+            return;
+        }
+        
         // Only load on our custom post type edit screen
         global $post;
         if ($hook == 'post-new.php' || $hook == 'post.php') {
