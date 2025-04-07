@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Subscription Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="subscription-form.css">
+</head>
+<body>
+    <div class="alc-form-container alc-py-8">
+        <form id="subscriptionForm" class="alc-card">
+            <h1 class="alc-text-2xl alc-font-bold alc-mb-6">Lease a Maserati Levante</h1>
+
+            <!-- Subscription length - will be populated by JS -->
+            <div class="alc-mb-6">
+                <div class="alc-section-heading">
+                    Subscription length 
+                    <i class="fas fa-info-circle alc-info-icon"></i>
+                </div>
+                <div id="subscription-options">
+                    <!-- Options will be inserted here dynamically -->
+                </div>
+            </div>
+
+            <!-- Insurance - will be populated by JS -->
+            <div class="alc-mb-6">
+                <div class="alc-section-heading">
+                    Insurance 
+                    <i class="fas fa-info-circle alc-info-icon"></i>
+                </div>
+                <div id="insurance-options">
+                    <!-- Options will be inserted here dynamically -->
+                </div>
+            </div>
+
+            <!-- Monthly mileage allowance - will be populated by JS -->
+            <div class="alc-mb-6">
+                <div class="alc-section-heading">
+                    Monthly mileage allowance
+                    <i class="fas fa-info-circle alc-info-icon"></i>
+                </div>
+                <div id="mileage-options">
+                    <!-- Options will be inserted here dynamically -->
+                </div>
+            </div>
+
+            <!-- Total price -->
+            <div class="alc-flex alc-justify-between alc-items-center alc-mb-6">
+                <div>
+                    <div class="alc-text-sm alc-text-gray-500">Total monthly price</div>
+                    <div class="alc-price-display" id="totalPrice">AED 1,900</div>
+                    <div class="alc-price-info">Inclusive of VAT</div>
+                </div>
+                <div class="alc-text-sm alc-text-gray-500">
+                    <span id="watchingCounter">3</span> people watching this car
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="alc-submit-btn alc-w-full">Subscribe now</button>
+        </form>
+    </div>
+
+    <script src="subscription-form.js"></script>
+</body>
+</html> 

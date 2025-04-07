@@ -1,0 +1,103 @@
+/**
+ * Admin styles for the Vehicle Leasing Form plugin
+ */
+
+/* Leasing Options Container */
+.leasing-options-container {
+    margin-top: 15px;
+}
+
+.leasing-options-section {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+}
+
+.leasing-options-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.leasing-options-section h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.leasing-options-list {
+    margin-bottom: 15px;
+}
+
+/* Option Items */
+.leasing-option-item {
+    background: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.leasing-option-item h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.option-number {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.remove-option {
+    color: #a00;
+    text-decoration: none;
+}
+
+.remove-option:hover {
+    color: #dc3232;
+    text-decoration: underline;
+}
+
+.option-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 15px;
+}
+
+.option-fields p {
+    margin: 0;
+}
+
+.option-fields label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.option-fields .description {
+    display: block;
+    margin-top: 5px;
+    color: #777;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+/* Make some fields full width */
+.option-fields p:nth-child(5) {
+    grid-column: 1 / span 2;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 782px) {
+    .option-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .option-fields p:nth-child(5) {
+        grid-column: 1;
+    }
+} 
